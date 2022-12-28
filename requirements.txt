@@ -1,6 +1,5 @@
 streamlit
 pandas
 numpy
-StringIO
-BytesIO
+io
 base64
