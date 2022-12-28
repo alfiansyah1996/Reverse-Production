@@ -1,0 +1,6 @@
+streamlit
+pandas
+numpy
+StringIO
+BytesIO
+base64
