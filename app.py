@@ -149,6 +149,7 @@ if process:
                 'total_forecast_weekly','ratio_stock_in_fg','ratio_forecast_for_fg','target_stock_for_fg','gap_stock_fg_to_target','uom_unit','sku_description_extract']]
 
 	join_5 = join_5.sort_values(by='gap_stock_fg_to_target', ascending=False)
+	join_5
 
 	top10 = join_5.head(100)
 	top10
