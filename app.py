@@ -151,7 +151,7 @@ if process:
 	join_5 = join_5.sort_values(by='gap_stock_fg_to_target', ascending=False)
 	join_5
 
-	top10 = join_5.head(100)
+	top10 = join_5.head(15)
 	top10
 
 	top10 = top10[['sku_description_extract']]
