@@ -170,7 +170,8 @@ if process:
 	join_5 = join_5.loc[(join_5['top_10'] == 1)]
 
 	join_5 = join_5[['warehouse','sku_number','sku_description','inventory_system_category','Finished_Goods_Storage',
-	                'total_forecast_weekly','ratio_stock_in_fg','ratio_forecast_for_fg','target_stock_for_fg','gap_stock_fg_to_target','uom_unit']]
+                'total_forecast_weekly','converter','total_forecast_weekly_uos','ratio_stock_in_fg','ratio_forecast_for_fg_uos','target_stock_for_fg',
+		'gap_stock_fg_to_target','uom_unit']]
 
 	join_5.loc[(join_5['gap_stock_fg_to_target'] > 0), 'note'] = 'production perlu produksi'
 	join_5.loc[(join_5['gap_stock_fg_to_target'] < 0), 'note'] = 'inventory perlu move dari fg ke production'
