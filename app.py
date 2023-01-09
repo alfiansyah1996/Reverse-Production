@@ -124,7 +124,7 @@ if process:
 	            left_on='sku_number',
 	            right_on='sku_number',
 	            how='left')
-	join_4['total_forecast_weekly_uos']=join_4['total_forecast_weekly']/join_4['converter']
+	join_4['total_forecast_weekly_uos']=join_4['total_forecast_weekly']*join_4['converter']
 
 	total_forecast = join_4[['helper_1','total_forecast_weekly_uos']]
 
