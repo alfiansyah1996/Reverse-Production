@@ -111,10 +111,10 @@ if process:
 
 	forecast = pd.read_excel(read_forecast)
 
-	forecast = forecast[['sku_code','forecast_promo']]
+	forecast = forecast[['sku_number','forecast']]
 
 	forecast = forecast.dropna()
-	forecast = pd.DataFrame(forecast.groupby(['sku_code'], as_index = False).sum())
+	forecast = pd.DataFrame(forecast.groupby(['sku_number'], as_index = False).sum())
 
 	forecast.columns =['sku_number','total_forecast_weekly']
 
