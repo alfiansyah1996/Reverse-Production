@@ -67,7 +67,7 @@ if process:
                         {'sku_description_extract': ' '}, regex=True)
 	sku_base = pd.read_excel(read_sku)
 
-	sku = sku_base[['sku_code','uom_qty','uom_unit']]
+	sku = sku_base[['sku_code','converter','uom_qty','uom_unit']]
 	sku.columns = ['sku_number','converter','uom_qty','uom_unit']
 
 	join = pd.merge(
