@@ -68,7 +68,7 @@ if process:
 	sku_base = pd.read_excel(read_sku)
 
 	sku = sku_base[['sku_code','uom_qty','uom_unit']]
-	sku.columns = ['sku_number','uom_qty','uom_unit']
+	sku.columns = ['sku_number','converter','uom_qty','uom_unit']
 
 	join = pd.merge(
 	            left=stock,
@@ -77,7 +77,8 @@ if process:
 	            right_on='sku_number',
 	            how='left')
 
-	join.loc[(join['uom_unit'] =='gram'), 'uom_qty'] = join['uom_qty']/1000
+	join['converter']=join['uom_qty']
+	join.loc[(join['uom_unit'] =='gram'), 'converter'] = join['uom_qty']/1000
 	join.loc[(join['uom_unit'] =='gram'), 'uom_unit'] = 'kg'
 
 	join['helper_1']=join['sku_description_extract']+' '+join['uom_unit']
@@ -123,12 +124,13 @@ if process:
 	            left_on='sku_number',
 	            right_on='sku_number',
 	            how='left')
+	join_4['total_forecast_weekly_uos']=join_4['total_forecast_weekly']/join_4['converter']
 
-	total_forecast = join_4[['helper_1','total_forecast_weekly']]
+	total_forecast = join_4[['helper_1','total_forecast_weekly_uos']]
 
 	total_forecast = pd.DataFrame(total_forecast.groupby(['helper_1'], as_index = False).sum())
 
-	total_forecast.columns = ['helper_1','total_forecast_for_fg']
+	total_forecast.columns = ['helper_1','total_forecast_for_fg_uos']
 
 	join_5 = pd.merge(
 	            left=join_4,
@@ -139,14 +141,15 @@ if process:
 
 	join_5 = join_5.fillna(0)
 
-	join_5['ratio_forecast_for_fg']=join_5['total_forecast_weekly']/join_5['total_forecast_for_fg']
+	join_5['ratio_forecast_for_fg']=join_5['total_forecast_weekly_uos']/join_5['total_forecast_for_fg_uos']
 
 	join_5['target_stock_for_fg']=(join_5['ratio_forecast_for_fg']*join_5['total_all_stock_in_fg']).round(0)
 
 	join_5['gap_stock_fg_to_target']=join_5['target_stock_for_fg']-join_5['Finished_Goods_Storage']
 
 	join_5 = join_5[['warehouse','sku_number','sku_description','inventory_system_category','Finished_Goods_Storage',
-                'total_forecast_weekly','ratio_stock_in_fg','ratio_forecast_for_fg','target_stock_for_fg','gap_stock_fg_to_target','uom_unit','sku_description_extract']]
+                'total_forecast_weekly','converter','total_forecast_weekly_uos','ratio_stock_in_fg','ratio_forecast_for_fg_uos','target_stock_for_fg',
+		'gap_stock_fg_to_target','uom_unit','sku_description_extract']]
 
 	join_5 = join_5.sort_values(by='gap_stock_fg_to_target', ascending=False)
 	join_5
