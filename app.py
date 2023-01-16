@@ -6,7 +6,7 @@ from io import StringIO, BytesIO
 from PIL import Image
 
 
-im = Image.open("Celine.jpg")
+im = Image.open("Sayurbox.jpg")
 st.set_page_config(
     page_title="Reverse Production",
     page_icon=im,
@@ -35,16 +35,11 @@ read_forecast = st.file_uploader('Upload Forecast', type='xlsx')
 if read_forecast:
 	st.markdown('Upload Success')
 
-st.write("3.Download SKU Variant [link](https://pisang.sayurbox.tech/question/5853-sku-master?warehouse=Sentul&inventory_system_category=Fruits&inventory_system_category=Vegetables), lalu upload langsung hasil download ke box dibawah")
-read_sku = st.file_uploader('Upload SKU Variant', type='xlsx')
-if read_sku:
-	st.markdown('Upload Success')
-
-st.write("4.Input Jumlah SKU yang ingin direverse")
+st.write("3.Input Jumlah SKU yang ingin direverse")
 number = st.number_input('Input')
 number = int(number)
 
-st.write("5.Pilih Inventory System Category")
+st.write("4.Pilih Inventory System Category")
 option = st.selectbox(
     'Input',
     ('Fruits', 'Vegetables'))
@@ -85,7 +80,7 @@ if process:
 	
 	stock
 	
-	sku_base = pd.read_excel(read_sku)
+	sku_base = pd.read_excel('SKU Variant.xlsx')
 
 	sku = sku_base[['sku_code','converter','uom_qty','uom_unit']]
 	sku.columns = ['sku_number','converter','uom_qty','uom_unit']
