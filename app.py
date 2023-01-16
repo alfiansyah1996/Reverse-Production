@@ -30,16 +30,11 @@ read_stock = st.file_uploader('Upload Current Stock', type='xlsx')
 if read_stock:
 	st.markdown('Upload Success')
 
-st.write("2.Download Current Forecast [link](https://drive.google.com/drive/u/0/folders/1j2IM50MA4RaXnsY-cwcvGiwUmwELTFoQ), lalu upload langsung hasil download ke box dibawah")
-read_forecast = st.file_uploader('Upload Forecast', type='xlsx')
-if read_forecast:
-	st.markdown('Upload Success')
-
-st.write("3.Input Jumlah SKU yang ingin direverse")
+st.write("2.Input Jumlah SKU yang ingin direverse")
 number = st.number_input('Input')
 number = int(number)
 
-st.write("4.Pilih Inventory System Category")
+st.write("3.Pilih Inventory System Category")
 option = st.selectbox(
     'Input',
     ('Fruits', 'Vegetables'))
@@ -124,7 +119,7 @@ if process:
 
 
 
-	forecast = pd.read_excel(read_forecast)
+	forecast = pd.read_excel('Forecast.xlsx')
 
 	forecast = forecast[['sku_number','forecast']]
 
