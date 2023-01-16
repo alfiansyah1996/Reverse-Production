@@ -78,6 +78,8 @@ if process:
 	stock = stock.replace({'sku_description_extract': '  '}, 
                         {'sku_description_extract': ' '}, regex=True)
 	
+	stock
+	
 	sku_base = pd.read_excel(read_sku)
 
 	sku = sku_base[['sku_code','converter','uom_qty','uom_unit']]
