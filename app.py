@@ -20,15 +20,17 @@ def generate_excel_download_link(df):
     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="data_download.xlsx">Download Excel File</a>'
     return st.markdown(href, unsafe_allow_html=True)
 
+st.write("1.Download Current Stock [link](https://pisang.sayurbox.tech/question/2404-inventory-summary-warehouse-area-inventory-management-system?warehouse=Sentul&inventory_system_category=Fruits&inventory_system_category=Vegetables), lalu upload langsung hasil download ke box dibawah")
 read_stock = st.file_uploader('Upload Current Stock', type='xlsx')
 if read_stock:
 	st.markdown('Upload Success')
 
-
+st.write("2.Download Current Forecast [link](https://drive.google.com/drive/u/0/folders/1j2IM50MA4RaXnsY-cwcvGiwUmwELTFoQ), lalu upload langsung hasil download ke box dibawah")
 read_forecast = st.file_uploader('Upload Forecast', type='xlsx')
 if read_forecast:
 	st.markdown('Upload Success')
 
+st.write("3.Download SKU Variant [link](https://pisang.sayurbox.tech/question/5853-sku-master?warehouse=Sentul&inventory_system_category=Fruits&inventory_system_category=Vegetables), lalu upload langsung hasil download ke box dibawah")
 read_sku = st.file_uploader('Upload SKU Variant', type='xlsx')
 if read_sku:
 	st.markdown('Upload Success')
