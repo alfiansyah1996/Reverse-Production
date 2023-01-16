@@ -181,7 +181,7 @@ if process:
 
 	join_5.loc[(join_5['gap_stock_fg_to_target'] > 0), 'note'] = 'production perlu produksi'
 	join_5.loc[(join_5['gap_stock_fg_to_target'] < 0), 'note'] = 'inventory perlu move dari fg ke production'
-	join_5 = join_5.loc[(join_5['gap_stock_fg_to_target'] != 0)
+	join_5 = join_5.loc[(join_5['gap_stock_fg_to_target'] != 0)]
 	st.markdown('Process Complated')
 	st.dataframe(join_5)
 
