@@ -36,7 +36,7 @@ if read_sku:
 	st.markdown('Upload Success')
 
 st.write("4.Input Jumlah SKU yang ingin direverse")
-number = st.number_input('')
+number = st.number_input('Input')
 number = int(number)
 
 
