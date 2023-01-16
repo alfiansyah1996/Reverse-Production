@@ -2,12 +2,17 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import base64 
-from io import StringIO, BytesIO  
+from io import StringIO, BytesIO
+from PIL import Image
 
 
+im = Image.open("Celine.jpg")
+st.set_page_config(
+    page_title="Reverse Production",
+    page_icon=im,
+    layout="wide",
+)
 
-
-st.set_page_config(page_title='Reverse Production')
 st.title('Reverse Production App')
 
 
