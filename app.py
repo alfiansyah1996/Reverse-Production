@@ -39,15 +39,16 @@ st.write("4.Input Jumlah SKU yang ingin direverse")
 number = st.number_input('Input')
 number = int(number)
 
-options = st.multiselect(
-    'Pilih Inventory System Category',
-    ['Fruits', 'Vegetables'])
+st.write("5.Pilih Inventory System Category")
+option = st.selectbox(
+    'Input',
+    ('Fruits', 'Vegetables'))
 
 
 process = st.button("Process")
 if process:
 	stock = pd.read_excel(read_stock)
-	stock = stock.loc[(stock['inventory_system_category'] == 'Fruits') | (stock['inventory_system_category'] == 'Vegetables')]
+	stock = stock.loc[(stock['inventory_system_category'] == option)]
 	stock = stock.loc[(stock['Finished_Goods_Storage'] > 0)]
 	stock = stock[['warehouse','sku_number','sku_description','inventory_system_category','Finished_Goods_Storage']]
 	stock['sku_description_extract'] = stock['sku_description'].str.replace(r'\s*\w+(?:\W+\w+)?\s*(?![^,])', '')
