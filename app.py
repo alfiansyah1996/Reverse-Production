@@ -72,10 +72,13 @@ if process:
                         {'sku_description_extract': 'Konvensional'}, regex=True)
 	stock = stock.replace({'sku_description_extract': ' B2B'}, 
                         {'sku_description_extract': ''}, regex=True)
+	stock = stock.replace({'sku_description_extract': 'Tebus Murah'}, 
+                        {'sku_description_extract': ''}, regex=True)
 	stock = stock.replace({'sku_description_extract': ' Konvensional'}, 
                         {'sku_description_extract': ''}, regex=True)
 	stock = stock.replace({'sku_description_extract': '  '}, 
                         {'sku_description_extract': ' '}, regex=True)
+	
 	sku_base = pd.read_excel(read_sku)
 
 	sku = sku_base[['sku_code','converter','uom_qty','uom_unit']]
