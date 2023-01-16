@@ -34,8 +34,10 @@ st.write("3.Download SKU Variant [link](https://pisang.sayurbox.tech/question/58
 read_sku = st.file_uploader('Upload SKU Variant', type='xlsx')
 if read_sku:
 	st.markdown('Upload Success')
-	
-number = st.number_input('Input Jumlah SKU yang ingin di reverse')
+
+st.write("4.Input Jumlah SKU yang ingin direverse")
+number = st.number_input('')
+number = int(number)
 
 
 process = st.button("Process")
