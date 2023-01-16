@@ -156,7 +156,7 @@ if process:
 
 	join_5['target_stock_for_fg']=(join_5['ratio_forecast_for_fg']*join_5['total_all_stock_in_fg']).round(0)
 
-	join_5['gap_stock_fg_to_target']=join_5['target_stock_for_fg']-join_5['Finished_Goods_Storage']
+	join_5['gap_stock_fg_to_target']=(join_5['target_stock_for_fg']-join_5['Finished_Goods_Storage']).apply(np.ceil)
 
 	join_5 = join_5[['warehouse','sku_number','sku_description','inventory_system_category','Finished_Goods_Storage',
                 'total_forecast_weekly','converter','total_forecast_weekly_uos','ratio_stock_in_fg','ratio_forecast_for_fg','target_stock_for_fg',
