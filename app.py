@@ -39,6 +39,10 @@ st.write("4.Input Jumlah SKU yang ingin direverse")
 number = st.number_input('Input')
 number = int(number)
 
+options = st.multiselect(
+    'Pilih Inventory System Category',
+    ['Fruits', 'Vegetables'])
+
 
 process = st.button("Process")
 if process:
@@ -160,7 +164,7 @@ if process:
 	join_5 = join_5.sort_values(by='gap_stock_fg_to_target', ascending=False)
 	join_5
 
-	top10 = join_5.head(15)
+	top10 = join_5.head(number)
 	top10
 
 	top10 = top10[['sku_description_extract']]
