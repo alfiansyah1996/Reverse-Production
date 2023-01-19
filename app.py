@@ -165,7 +165,7 @@ if process:
 	join_5 = join_5.loc[(join_5['gap_stock_fg_to_target'] != 0)]
 	
 	
-	top_10 = join_5.loc[(join_5['Finished_Goods_Storage'] == 0)]
+	top10 = join_5.loc[(join_5['Finished_Goods_Storage'] == 0)]
 	top10 = top10.head(number)
 
 	top10 = top10[['sku_description_extract']]
