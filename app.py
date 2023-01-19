@@ -160,8 +160,13 @@ if process:
 		'gap_stock_fg_to_target','uom_unit','sku_description_extract']]
 
 	join_5 = join_5.sort_values(by='gap_stock_fg_to_target', ascending=False)
-
-	top10 = join_5.head(number)
+	join_5.loc[(join_5['gap_stock_fg_to_target'] > 0), 'note'] = 'production perlu produksi'
+	join_5.loc[(join_5['gap_stock_fg_to_target'] < 0), 'note'] = 'inventory perlu move dari fg ke production'
+	join_5 = join_5.loc[(join_5['gap_stock_fg_to_target'] != 0)]
+	
+	
+	top_10 = join_5.loc[(join_5['Finished_Goods_Storage'] == 0)]
+	top10 = top10.head(number)
 
 	top10 = top10[['sku_description_extract']]
 	top10['top_10']=1
@@ -179,9 +184,6 @@ if process:
                 'total_forecast_weekly','converter','total_forecast_weekly_uos','ratio_stock_in_fg','ratio_forecast_for_fg','target_stock_for_fg',
 		'gap_stock_fg_to_target','uom_unit']]
 
-	join_5.loc[(join_5['gap_stock_fg_to_target'] > 0), 'note'] = 'production perlu produksi'
-	join_5.loc[(join_5['gap_stock_fg_to_target'] < 0), 'note'] = 'inventory perlu move dari fg ke production'
-	join_5 = join_5.loc[(join_5['gap_stock_fg_to_target'] != 0)]
 	st.markdown('Process Complated')
 	st.dataframe(join_5)
 
