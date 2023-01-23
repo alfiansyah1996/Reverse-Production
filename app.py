@@ -172,7 +172,7 @@ if process:
 	
 	need_production = join_5.loc[(join_5['note'] == 'production perlu produksi')]
 	need_production = [['sku_description_extract','Finished_Goods_Storage']]
-	need_production.columns = ['sku_description_extract','need_production']
+	need_production.columns = ['sku_description_extract','fg_0']
 	
 	top10 = pd.merge(
 	            left=top10,
@@ -181,7 +181,7 @@ if process:
 	            right_on='sku_description_extract',
 	            how='left')
 	
-	top10 = top10.loc[(top10['need_production'] == 0)]
+	top10 = top10.loc[(top10['fg_0'] == 0)]
 	top10_final = top10.tail(number)
 	top10_final
 
