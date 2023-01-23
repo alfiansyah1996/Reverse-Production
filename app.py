@@ -168,7 +168,7 @@ if process:
 	
 	
 	top10 = join_5.loc[(join_5['Finished_Goods_Storage'] == 0)]
-	top10 = join_5.loc[(join_5['note'] == 'inventory perlu move dari fg ke production')]
+	top10 = top10.loc[(top10['note'] == 'inventory perlu move dari fg ke production')]
 	top10 = top10.head(number)
 	
 
