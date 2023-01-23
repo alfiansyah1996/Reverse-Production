@@ -160,6 +160,7 @@ if process:
 		'gap_stock_fg_to_target','uom_unit','sku_description_extract']]
 
 	join_5 = join_5.sort_values(by='gap_stock_fg_to_target', ascending=False)
+	join_5 = join_5.fillna(0)
 	join_5.loc[(join_5['gap_stock_fg_to_target'] > 0), 'note'] = 'production perlu produksi'
 	join_5.loc[(join_5['gap_stock_fg_to_target'] < 0), 'note'] = 'inventory perlu move dari fg ke production'
 	join_5 = join_5.loc[(join_5['gap_stock_fg_to_target'] != 0)]
