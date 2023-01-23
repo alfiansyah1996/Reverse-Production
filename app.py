@@ -172,6 +172,7 @@ if process:
 	
 	need_production = join_5.loc[(join_5['note'] == 'production perlu produksi')]
 	need_production = [['sku_description_extract','Finished_Goods_Storage']]
+	need_production
 	need_production.columns = ['sku_description_extract','fg_0']
 	
 	top10 = pd.merge(
