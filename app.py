@@ -188,12 +188,12 @@ if process:
 
 	
 
-	top10 = top10[['sku_description_extract']]
-	top10['top_10']=1
+	top10_final = top10_final[['sku_description_extract']]
+	top10_final['top_10']=1
 
 	join_5 = pd.merge(
 	            left=join_5,
-	            right=top10,
+	            right=top10_final,
 	            left_on='sku_description_extract',
 	            right_on='sku_description_extract',
 	            how='left')
